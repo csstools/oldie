@@ -1,6 +1,6 @@
 {
   "name": "oldie",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Transform CSS into something compatible with older Internet Explorer",
   "keywords": [
     "postcss",
@@ -39,6 +39,7 @@
     "postcss-pseudoelements": "^3.0.0",
     "postcss-unmq": "^1.0.0",
     "postcss-unnot": "^1.0.1",
+    "postcss-unnth": "^1.0.1",
     "postcss-unopacity": "^1.0.0",
     "postcss-unroot": "^1.0.0"
   },

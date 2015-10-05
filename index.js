@@ -18,6 +18,11 @@ var processors = [
 		defaults: {}
 	},
 	{
+		plugin: require('postcss-unnth'),
+		namespace: 'nth',
+		defaults: {}
+	},
+	{
 		plugin: require('postcss-unnot'),
 		namespace: 'not',
 		defaults: {}

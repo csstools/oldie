@@ -11,3 +11,7 @@ html body {
 	content: "";
 	filter: alpha(opacity=50);
 }
+
+p:first-child {
+	font-weight: bold;
+}

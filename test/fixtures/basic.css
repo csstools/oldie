@@ -18,4 +18,8 @@
 		content: "";
 		opacity: calc(1 / 2);
 	}
+
+	p:nth-child(1) {
+		font-weight: bold;
+	}
 }
