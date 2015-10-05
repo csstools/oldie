@@ -1,0 +1,13 @@
+html body {
+	background-color: black;
+	color: white;
+}
+
+html body {
+	font-size: 12px;
+}
+
+ header:after {
+	content: "";
+	filter: alpha(opacity=50);
+}

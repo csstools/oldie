@@ -1,0 +1,58 @@
+{
+  "name": "oldie",
+  "version": "1.0.0",
+  "description": "Transform CSS into something compatible with older Internet Explorer",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "mqs",
+    "medias",
+    "query",
+    "queries",
+    "opacity",
+    "opacities",
+    "filters",
+    "-ms-filters",
+    "ms",
+    "prefixes",
+    "pixels",
+    "rems",
+    "nots",
+    "selectors"
+  ],
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathantneal/oldie.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonathantneal/oldie/issues"
+  },
+  "homepage": "https://github.com/jonathantneal/oldie",
+  "dependencies": {
+    "object-assign": "^4.0.1",
+    "pixrem": "^3.0.0",
+    "postcss": "^5.0.8",
+    "postcss-calc": "^5.0.0",
+    "postcss-pseudoelements": "^3.0.0",
+    "postcss-unmq": "^1.0.0",
+    "postcss-unnot": "^1.0.1",
+    "postcss-unopacity": "^1.0.0",
+    "postcss-unroot": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.0.0",
+    "gulp-mocha": "^2.1.3"
+  },
+  "scripts": {
+    "test": "gulp"
+  },
+  "engines": {
+    "iojs": ">=2.0.0",
+    "node": ">=0.12.0"
+  }
+}

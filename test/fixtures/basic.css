@@ -1,0 +1,21 @@
+:root body {
+	background-color: black;
+	color: white;
+}
+
+@media screen and (max-width: 767px) {
+	:root body {
+		font-size: 1rem;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	:root body {
+		font-size: .75rem;
+	}
+
+	.header:not(header), header::after {
+		content: "";
+		opacity: calc(1 / 2);
+	}
+}
