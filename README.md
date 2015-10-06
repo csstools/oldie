@@ -2,11 +2,14 @@
 
 <img align="right" width="135" height="95" src="http://postcss.github.io/postcss/logo-leftp.png" title="Philosopher’s stone, logo of PostCSS">
 
-[Oldie] is a [PostCSS] plugin pack that transforms CSS into something compatible with older Internet Explorer.
+[Oldie] is a [PostCSS] plugin pack that creates CSS compatible with old Internet Explorer.
+
+```html
+<!--[if gt IE 8]><!--><link href="style.css" rel="stylesheet"><!--<![endif]-->
+<!--[if lte IE 8]><link href="style.oldie.css" rel="stylesheet"><![endif]-->
+```
 
 If you’re like me, you stopped supporting IE8 years ago. Yet, here you are, satisfying another client that somehow managed to get this requirement past you.
-
-## Features
 
 ### Flatten Media Queries
 
@@ -42,7 +45,7 @@ body {
 }
 ```
 
-### Convert :root
+### Replace :root
 
 Swap `:root` selectors with `html` selectors.
 
@@ -62,7 +65,7 @@ html {
 }
 ```
 
-### Reduce calc
+### Reduce calc()
 
 Reduce `calc()` references whenever possible.
 
@@ -80,7 +83,7 @@ Reduce `calc()` references whenever possible.
 }
 ```
 
-### Convert rems
+### Resolve rem
 
 Resolve `rem` values as standard pixels.
 
@@ -98,7 +101,7 @@ Resolve `rem` values as standard pixels.
 }
 ```
 
-### Convert opacity
+### Patch opacity
 
 Swap `opacity` properties with IE8 compatible `filter` properties.
 
@@ -116,7 +119,7 @@ Swap `opacity` properties with IE8 compatible `filter` properties.
 }
 ```
 
-### Convert pseudo-elements
+### Patch pseudo-elements
 
 Swap `::` selectors with IE8 compatible `:` selectors.
 
@@ -152,6 +155,24 @@ Remove `:not()` selectors while preserving the other selectors in a rule.
 }
 ```
 
+### Keep :nth-child
+
+Swap `:nth-child` selectors with `:first-child`.
+
+```css
+/* before */
+
+.container > p:nth-child(4).specific > span {
+   font-weight: bold;
+}
+ 
+/* after */
+ 
+.container > :first-child + * + * + p.specific > span {
+    font-weight: bold;
+}
+```
+
 ## Plugins
 
 [Oldie] is powered by the following plugins:
@@ -159,19 +180,13 @@ Remove `:not()` selectors while preserving the other selectors in a rule.
 - [PostCSS Calc](https://github.com/postcss/postcss-calc)
 - [PostCSS UnMQ](https://github.com/jonathantneal/postcss-unmq)
 - [PostCSS UnRoot](https://github.com/jonathantneal/postcss-unroot)
+- [PostCSS UnNth](https://github.com/jonathantneal/postcss-unnth)
 - [PostCSS UnNot](https://github.com/jonathantneal/postcss-unnot)
 - [PostCSS UnOpacity](https://github.com/jonathantneal/postcss-unopacity)
 - [PostCSS Pixrem](https://github.com/robwierzbowski/node-pixrem)
 - [PostCSS Pseudo Elements](https://github.com/axa-ch/postcss-pseudoelements)
 
-Some of these plugins have more features than are described here.
-
-## Recommended Usage of Oldie CSS
-
-```html
-<!--[if gt IE 8]><!--><link href="style.css" rel="stylesheet"><!--<![endif]-->
-<!--[if lte IE 8]><link href="style.oldie.css" rel="stylesheet"><![endif]-->
-```
+Some of these plugins have more features than are described here. Visit their project pages to learn more about them individually.
 
 ## Usage
 
