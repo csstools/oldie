@@ -1,5 +1,5 @@
 :root body {
-	background-color: black;
+	background-color: rgba(0, 0, 0, .9);
 	color: white;
 }
 
@@ -19,7 +19,7 @@
 		opacity: calc(1 / 2);
 	}
 
-	p:nth-child(1) {
+	p:nth-child(2) {
 		font-weight: bold;
 	}
 }

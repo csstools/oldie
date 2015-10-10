@@ -3,46 +3,51 @@ var postcss = require('postcss');
 
 var processors = [
 	{
-		plugin: require('postcss-calc'),
+		plugin:    require('postcss-calc'),
 		namespace: 'calc',
-		defaults: {}
+		defaults:  {}
 	},
 	{
-		plugin: require('postcss-unmq'),
+		plugin:    require('postcss-unmq'),
 		namespace: 'media',
-		defaults: {}
+		defaults:  {}
 	},
 	{
-		plugin: require('postcss-unroot'),
+		plugin:    require('postcss-unroot'),
 		namespace: 'root',
-		defaults: {}
+		defaults:  {}
 	},
 	{
-		plugin: require('postcss-unnth'),
+		plugin:    require('postcss-unnth'),
 		namespace: 'nth',
-		defaults: {}
+		defaults:  {}
 	},
 	{
-		plugin: require('postcss-unnot'),
+		plugin:    require('postcss-unnot'),
 		namespace: 'not',
-		defaults: {}
+		defaults:  {}
 	},
 	{
-		plugin: require('postcss-unopacity'),
+		plugin:    require('postcss-unopacity'),
 		namespace: 'opacity',
-		defaults: {}
+		defaults:  {}
 	},
 	{
-		plugin: require('pixrem'),
+		plugin:    require('postcss-unrgba'),
+		namespace: 'rgba',
+		defaults:  {}
+	},
+	{
+		plugin:    require('pixrem'),
 		namespace: 'rem',
-		defaults: {
+		defaults:  {
 			replace: true
 		}
 	},
 	{
-		plugin: require('postcss-pseudoelements'),
+		plugin:    require('postcss-pseudoelements'),
 		namespace: 'pseudo',
-		defaults: {}
+		defaults:  {}
 	}
 ];
 

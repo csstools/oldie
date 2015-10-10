@@ -1,42 +1,52 @@
-var path    = require('path');
-var postcss = require('postcss');
-var expect  = require('chai').expect;
+var tests = {
+	'postcss-unrgba': {
+		'basic': {
+			message: 'supports basic usage'
+		}
+	}
+};
+
+var debug = false;
+var dir   = './test/fixtures/';
+
 var fs      = require('fs');
-var debug   = false;
+var path    = require('path');
+var plugin  = require('../');
+var test    = require('tape');
 
-var plugin = require('../');
+Object.keys(tests).forEach(function (name) {
+	var parts = tests[name];
 
-function test(name, opts, done, warnings) {
-	var fixtureDir = './test/fixtures/';
-	var baseName   = name.split(':')[0];
-	var testName   = name.split(':').join('.');
-	var inputPath  = path.resolve(fixtureDir + baseName + '.css');
-	var expectPath = path.resolve(fixtureDir + testName + '.expect.css');
-	var actualPath = path.resolve(fixtureDir + testName + '.actual.css');
+	test(name, function (t) {
+		var fixtures = Object.keys(parts);
 
-	var inputCSS  = fs.readFileSync(inputPath, 'utf8');
-	var expectCSS = fs.readFileSync(expectPath, 'utf8');
+		t.plan(fixtures.length * 2);
 
-	warnings = warnings || 0;
+		fixtures.forEach(function (fixture) {
+			var message    = parts[fixture].message;
+			var options    = parts[fixture].options;
+			var warning    = parts[fixture].warning || 0;
+			var warningMsg = message + ' (# of warnings)';
 
-	postcss([plugin(opts)]).process(inputCSS, {
-		from: inputPath
-	}).then(function (result) {
-		var actualCSS = result.css;
+			var baseName   = fixture.split(':')[0];
+			var testName   = fixture.split(':').join('.');
 
-		if (debug) fs.writeFileSync(actualPath, actualCSS);
+			var inputPath  = path.resolve(dir + baseName + '.css');
+			var expectPath = path.resolve(dir + testName + '.expect.css');
+			var actualPath = path.resolve(dir + testName + '.actual.css');
 
-		expect(actualCSS).to.eql(expectCSS);
-		expect(result.warnings()).to.have.length(warnings);
+			var inputCSS  = fs.readFileSync(inputPath,  'utf8');
+			var expectCSS = fs.readFileSync(expectPath, 'utf8');
 
-		done();
-	}).catch(function (error) {
-		done(error);
-	});
-}
+			plugin.process(inputCSS, options).then(function (result) {
+				var actualCSS = result.css;
 
-describe('oldie', function () {
-	it('supports basic usage', function (done) {
-		test('basic', {}, done);
+				if (debug) fs.writeFileSync(actualPath, actualCSS);
+
+				t.equal(actualCSS, expectCSS, message);
+
+				t.equal(result.warnings().length, warning, warningMsg);
+			});
+		});
 	});
 });

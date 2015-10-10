@@ -2,7 +2,7 @@
 
 <img align="right" width="135" height="95" src="http://postcss.github.io/postcss/logo-leftp.png" title="Philosopher’s stone, logo of PostCSS">
 
-[Oldie] is a [PostCSS] plugin pack that creates CSS compatible with old Internet Explorer.
+[Oldie] tranforms CSS to be compatible with old Internet Explorer.
 
 ```html
 <!--[if gt IE 8]><!--><link href="style.css" rel="stylesheet"><!--<![endif]-->
@@ -101,7 +101,7 @@ Resolve `rem` values as standard pixels.
 }
 ```
 
-### Patch opacity
+### Uphold opacity
 
 Swap `opacity` properties with IE8 compatible `filter` properties.
 
@@ -137,6 +137,26 @@ a:after {
 }
 ```
 
+### Retain rgba colors
+
+Swap `rgba` values with IE8 compatible hex values and filter properties.
+
+```css
+/* before */
+
+.hero {
+    background-color: rgba(153, 221, 153, .8);
+    border: solid 1px rgba(100, 102, 103, .3);
+}
+
+/* after */
+
+.hero {
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#8099dd99',endColorstr='#8099dd99');
+    border: solid 1px #646667;
+}
+```
+
 ### Forget :not
 
 Remove `:not()` selectors while preserving the other selectors in a rule.
@@ -155,7 +175,7 @@ Remove `:not()` selectors while preserving the other selectors in a rule.
 }
 ```
 
-### Keep :nth-child
+### Salvage :nth-child
 
 Swap `:nth-child` selectors with `:first-child`.
 
@@ -183,6 +203,7 @@ Swap `:nth-child` selectors with `:first-child`.
 - [PostCSS UnNth](https://github.com/jonathantneal/postcss-unnth)
 - [PostCSS UnNot](https://github.com/jonathantneal/postcss-unnot)
 - [PostCSS UnOpacity](https://github.com/jonathantneal/postcss-unopacity)
+- [PostCSS UnRGBA](https://github.com/jonathantneal/postcss-unrgba)
 - [PostCSS Pixrem](https://github.com/robwierzbowski/node-pixrem)
 - [PostCSS Pseudo Elements](https://github.com/axa-ch/postcss-pseudoelements)
 
@@ -278,6 +299,9 @@ Each plugin’s options may be configured by targeting the plugin’s namespace.
 Example:
 ```js
 require('oldie')({
+    rgba: {
+        filter: true
+    },
     rem: {
         replace: false
     },
