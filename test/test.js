@@ -1,5 +1,5 @@
 var tests = {
-	'postcss-unrgba': {
+	'oldie': {
 		'basic': {
 			message: 'supports basic usage'
 		}

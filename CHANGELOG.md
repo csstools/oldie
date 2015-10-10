@@ -1,3 +1,8 @@
+## 1.3.0 (2015-10-10)
+
+- Updated: PostCSS UnRGBA 1.1.0 (major)
+- Updated: PostCSS 5.0.9 (patch)
+
 ## 1.2.0 (2015-10-10)
 
 - Added: PostCSS UnRGBA 1.0.0
