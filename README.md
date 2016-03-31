@@ -305,7 +305,7 @@ require('oldie')({
     rem: {
         replace: false
     },
-    unmq: {
+    media: {
         disable: true
     }
 })
