@@ -2,7 +2,7 @@
 
 <img align="right" width="135" height="95" src="http://postcss.github.io/postcss/logo-leftp.png" title="Philosopher’s stone, logo of PostCSS">
 
-[Oldie] tranforms CSS to be compatible with old Internet Explorer.
+[Oldie] transforms CSS to be compatible with old Internet Explorer.
 
 ```html
 <!--[if gt IE 8]><!--><link href="style.css" rel="stylesheet"><!--<![endif]-->
